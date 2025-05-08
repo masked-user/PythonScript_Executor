@@ -114,6 +114,7 @@ finally:
             "--disable_proc",
             "--hostname", "sandbox",
             "--cwd", "/tmp",
+            "--bindmount_ro", "/lib64:/lib64",
             "--bindmount_ro", "/usr/lib:/usr/lib",
             "--bindmount_ro", "/lib:/lib",
             "--bindmount_ro", "/usr/local:/usr/local",
