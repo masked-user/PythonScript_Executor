@@ -31,8 +31,8 @@ RUN useradd -m -s /bin/bash sandbox_user
 RUN [ -e /usr/local/bin/python3 ] || ln -s /usr/local/bin/python3.9 /usr/local/bin/python3
 
 RUN mkdir -p /lib64 \
-  && ln -sf /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
-
+ && ln -sf /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
+ 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
