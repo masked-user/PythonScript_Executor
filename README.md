@@ -123,7 +123,7 @@ Since Cloud Run **explicitly strips away** the Linux capabilities (`CAP_SYS_ADMI
    git clone https://github.com/yourusername/python-exec-service.git
    cd python-exec-service
    sudo docker build -t python-exec-service .
-   sudo docker run -d --privileged -p 80:8080 python-exec-service
+   sudo docker run -d --privileged -p 8080:8080 python-exec-service
    ```
 
 3. Log out and log back in, then deploy the application
@@ -131,5 +131,5 @@ Since Cloud Run **explicitly strips away** the Linux capabilities (`CAP_SYS_ADMI
    git clone https://github.com/masked-user/PythonScript_Executor.git
    cd python-exec-service
    docker build -t python-exec-service .
-   docker run -d --privileged -p 80:8080 python-exec-service
+   docker run -d --privileged -p 8080:8080 python-exec-service
    ```
