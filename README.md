@@ -98,9 +98,9 @@ Cloud Run is a **serverless container platform** running on shared infrastructur
 
 Since Cloud Run **explicitly strips away** the Linux capabilities (`CAP_SYS_ADMIN`, `CAP_SYS_CHROOT`, etc.) that nsjail needs, any attempt to start a new namespace or remap users will immediately fail.
 
-#### Recommended Deployment Approach
+#### Deployment Approach
 - **Not using Cloud Run (or other serverless/container-only offerings)** because of the above limitations.  
-- **Instead:** deploy on a **Google Compute Engine VM**, where we have full control over Linux capabilities and can run nsjail in "privileged" mode to safely sandbox arbitrary Python scripts.
+- **Instead:** Deploy on a **Google Compute Engine VM**, where we have full control over Linux capabilities and can run nsjail in "privileged" mode to safely sandbox arbitrary Python scripts.
 
 ### Google Compute Engine
 
@@ -124,12 +124,4 @@ Since Cloud Run **explicitly strips away** the Linux capabilities (`CAP_SYS_ADMI
    cd python-exec-service
    sudo docker build -t python-exec-service .
    sudo docker run -d --privileged -p 8080:8080 python-exec-service
-   ```
-
-3. Log out and log back in, then deploy the application
-   ```bash
-   git clone https://github.com/masked-user/PythonScript_Executor.git
-   cd python-exec-service
-   docker build -t python-exec-service .
-   docker run -d --privileged -p 8080:8080 python-exec-service
    ```
