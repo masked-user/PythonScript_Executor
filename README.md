@@ -47,7 +47,7 @@ docker run --rm -p 8080:8080 python-exec-service
 ### Example cURL
 
 ```bash
-url -X POST http://34.55.19.175:8080/execute \
+curl -X POST http://34.55.19.175:8080/execute \
   -H "Content-Type: application/json" \
   -d '{
     "script": "import pandas as pd\ndef main():\n    data = pd.DataFrame({\"numbers\": [1, 2, 3, 4, 5]})\n    return {\"mean\": data[\"numbers\"].mean(), \"max\": data[\"numbers\"].max()}"
