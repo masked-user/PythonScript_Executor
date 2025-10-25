@@ -88,19 +88,9 @@ curl -X POST http://34.55.19.175:8080/execute \
 
 ## Deployment
 
-### ⚠️ Cloud Run Limitations
-
-#### Why nsjail Fails on Cloud Run
-Cloud Run is a **serverless container platform** running on shared infrastructure, which **blocks all privileged operations** required by nsjail:
-- **Namespace creation** (`clone(flags=CLONE_NEWNS|…)`)  
-- **User‐namespace remapping** (running as root with mapped UIDs)  
-- **Dynamic mount operations** (`mount()`, bind‐mounts, etc.)  
-
-Since Cloud Run **explicitly strips away** the Linux capabilities (`CAP_SYS_ADMIN`, `CAP_SYS_CHROOT`, etc.) that nsjail needs, any attempt to start a new namespace or remap users will immediately fail.
 
 #### Deployment Approach
-- **Not using Cloud Run (or other serverless/container-only offerings)** because of the above limitations.  
-- **Instead:** Deploy on a **Google Compute Engine VM**, where we have full control over Linux capabilities and can run nsjail in "privileged" mode to safely sandbox arbitrary Python scripts.
+Deploy on a **Google Compute Engine VM**, where we have full control over Linux capabilities and can run nsjail in "privileged" mode to safely sandbox arbitrary Python scripts.
 
 ### Google Compute Engine
 
